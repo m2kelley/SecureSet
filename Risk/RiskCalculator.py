@@ -11,6 +11,7 @@ Code written by Michael Kelley @ SecureSet February 2016
 
 import math
 
+
 def formula():
     ISCBASE = ((ImpactC + ImpactI + ImpactA) / 3)
     print("Your ISCbase score is: %i" % ISCBASE)
