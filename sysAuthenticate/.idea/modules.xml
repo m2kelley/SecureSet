@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Crypto/.idea/Crypto.iml" filepath="$PROJECT_DIR$/../Crypto/.idea/Crypto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Risk/.idea/Risk.iml" filepath="$PROJECT_DIR$/../Risk/.idea/Risk.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/sysAuthenticate.iml" filepath="$PROJECT_DIR$/.idea/sysAuthenticate.iml" />
     </modules>
   </component>
