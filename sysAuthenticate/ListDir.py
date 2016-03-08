@@ -4,6 +4,7 @@ Written by Michael Kelley @ SecureSet 2016
 """
 import os
 import datetime
+import time
 
 path = (input('Please specify a directory:'))
 
@@ -19,7 +20,8 @@ def dirwalk(path):
 # st_mtime=1297230027, st_ctime=1297230027)
                 a = os.path.join(root, name)
                 statinfo = os.stat(a)
-                if statinfo.st_uid or statinfo.st_gid > 0:
+                if statinfo.st_uid or statinfo.st_gid > 0 or bin(statinfo.st_mode)[-2] is True or time.time() - 60 * \
+                        60 * 24 > statinfo.st_mtime:
                     ctime = datetime.datetime.fromtimestamp(statinfo.st_ctime)
                     mtime = datetime.datetime.fromtimestamp(statinfo.st_mtime)
                     atime = datetime.datetime.fromtimestamp(statinfo.st_atime)
@@ -31,11 +33,12 @@ def dirwalk(path):
                 name = name.strip()
                 d = os.path.join(root, name)
                 statinfo2 = os.stat(d)
-                if statinfo2.st_uid or statinfo2.st_gid > 0:
-                    cctime = datetime.datetime.fromtimestamp(statinfo.st_ctime)
-                    mmtime = datetime.datetime.fromtimestamp(statinfo.st_mtime)
-                    aatime = datetime.datetime.fromtimestamp(statinfo.st_atime)
-                    oown = statinfo.st_uid
+                if statinfo2.st_uid or statinfo2.st_gid > 0 or bin(statinfo2.st_mode)[-2] is True or time.time() - 60 \
+                        * 60 * 24 > statinfo2.st_mtime:
+                    cctime = datetime.datetime.fromtimestamp(statinfo2.st_ctime)
+                    mmtime = datetime.datetime.fromtimestamp(statinfo2.st_mtime)
+                    aatime = datetime.datetime.fromtimestamp(statinfo2.st_atime)
+                    oown = statinfo2.st_uid
                     print(d, '\nUID:', oown, '\ncreated:', cctime, '\nmodified:', mmtime, '\nlast accessed:', aatime)
                 else:
                     g += 1
